@@ -2,7 +2,7 @@ name: Build Windows Portable
 
 on:
   push:
-    branches: [ development, 'claude/keen-mccarthy-pny6ny' ]
+    branches: [ development ]
   workflow_dispatch:
 
 permissions:
