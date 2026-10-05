@@ -119,6 +119,14 @@
             :dropdown-options="formatTypeOptions"
             @click="changeFormat"
           />
+          <FtIconButton
+            v-if="USING_ELECTRON && !isUpcoming"
+            :title="t('Video.Download.Download')"
+            theme="secondary"
+            :icon="['fas', 'download']"
+            :dropdown-options="downloadOptions"
+            @click="downloadWithYtDlp"
+          />
           <FtShareButton
             v-if="!hideSharingActions"
             :id="id"
@@ -316,6 +324,30 @@ const formatTypeOptions = computed(() => [
  */
 function changeFormat(value) {
   emit('change-format', value)
+}
+
+const downloadOptions = computed(() => [
+  {
+    label: t('Video.Download.Video'),
+    value: 'video'
+  },
+  {
+    label: t('Video.Download.Audio Only'),
+    value: 'audio'
+  }
+])
+
+/**
+ * @param {'video' | 'audio'} value
+ */
+async function downloadWithYtDlp(value) {
+  showToast(t('Video.Download.Download started'))
+
+  const success = await window.ftElectron.downloadWithYtDlp(props.id, value === 'audio')
+
+  showToast(success
+    ? t('Video.Download.Download finished', { title: props.title })
+    : t('Video.Download.Download failed', { title: props.title }))
 }
 
 const watchedProgressSavingInSemiAutoMode = computed(() => {

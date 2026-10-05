@@ -28,6 +28,7 @@ import contextMenu from 'electron-context-menu'
 
 import packageDetails from '../../package.json'
 import { handleOpenInExternalPlayer } from './externalPlayer'
+import { handleYtDlpDownload } from './ytDlp'
 import { generatePoToken } from './poTokenGenerator'
 import { isFreeTubeUrl } from './utils'
 
@@ -1585,6 +1586,8 @@ function runApp() {
   })
 
   ipcMain.on(IpcChannels.OPEN_IN_EXTERNAL_PLAYER, handleOpenInExternalPlayer)
+
+  ipcMain.handle(IpcChannels.YT_DLP_DOWNLOAD, handleYtDlpDownload)
 
   ipcMain.handle(IpcChannels.GET_REPLACE_HTTP_CACHE, (event) => {
     if (isFreeTubeUrl(event.senderFrame.url)) {

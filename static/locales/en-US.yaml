@@ -869,6 +869,13 @@ Video:
   Video has been removed from your history: Video has been removed from your history
   Save Watched Progress: Save Watched Progress
   Watched Progress Saved: Watched Progress Saved
+  Download:
+    Download: Download
+    Video: Video
+    Audio Only: Audio Only
+    Download started: Download started
+    Download finished: 'Download finished: {title}'
+    Download failed: 'Download failed: {title}'
   Save Video: Save Video
   Video has been saved: Video has been saved
   Video has been removed from your saved list: Video has been removed from your saved list

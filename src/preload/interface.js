@@ -180,6 +180,15 @@ export default {
   },
 
   /**
+   * @param {string} videoId
+   * @param {boolean} audioOnly
+   * @returns {Promise<boolean>}
+   */
+  downloadWithYtDlp: (videoId, audioOnly) => {
+    return ipcRenderer.invoke(IpcChannels.YT_DLP_DOWNLOAD, videoId, audioOnly)
+  },
+
+  /**
    * @param {number} factor
    */
   setZoomFactor: (factor) => {
