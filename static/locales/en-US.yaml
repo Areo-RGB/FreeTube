@@ -875,7 +875,7 @@ Video:
     Audio Only: Audio Only
     Download started: Download started
     Download finished: 'Download finished: {title}'
-    Download failed: 'Download failed: {title}'
+    Download failed: 'Download failed: {error}'
   Save Video: Save Video
   Video has been saved: Video has been saved
   Video has been removed from your saved list: Video has been removed from your saved list

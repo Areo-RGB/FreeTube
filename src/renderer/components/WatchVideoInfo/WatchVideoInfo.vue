@@ -343,11 +343,13 @@ const downloadOptions = computed(() => [
 async function downloadWithYtDlp(value) {
   showToast(t('Video.Download.Download started'))
 
-  const success = await window.ftElectron.downloadWithYtDlp(props.id, value === 'audio')
+  const error = await window.ftElectron.downloadWithYtDlp(props.id, value === 'audio')
 
-  showToast(success
-    ? t('Video.Download.Download finished', { title: props.title })
-    : t('Video.Download.Download failed', { title: props.title }))
+  if (error === null) {
+    showToast(t('Video.Download.Download finished', { title: props.title }))
+  } else {
+    showToast(t('Video.Download.Download failed', { error }), 15000)
+  }
 }
 
 const watchedProgressSavingInSemiAutoMode = computed(() => {

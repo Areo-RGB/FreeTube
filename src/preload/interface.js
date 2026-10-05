@@ -182,7 +182,7 @@ export default {
   /**
    * @param {string} videoId
    * @param {boolean} audioOnly
-   * @returns {Promise<boolean>}
+   * @returns {Promise<string | null>}
    */
   downloadWithYtDlp: (videoId, audioOnly) => {
     return ipcRenderer.invoke(IpcChannels.YT_DLP_DOWNLOAD, videoId, audioOnly)
